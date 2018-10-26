@@ -73,7 +73,7 @@ public class Testemail {
 
  
 
-  public static void main(String args[]) throws Exception {
+  public static void Testemail() throws Exception {
     Testemail.doit();
   }
 }

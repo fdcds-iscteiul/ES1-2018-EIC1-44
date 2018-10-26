@@ -6,8 +6,12 @@ import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
+
+
 public final class TwitterMain  {
-	public static void main(String[] args) {
+	public TwitterMain() {
+		
+
 		// http://twitter4j.org
 		// http://twitter4j.org/en/code-examples.html
 		// https://www.youtube.com/watch?v=uYPmkzMpnxw
