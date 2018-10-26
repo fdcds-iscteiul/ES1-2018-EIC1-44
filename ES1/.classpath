@@ -2,5 +2,8 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/Fabio/.m2/repository/org/twitter4j/twitter4j-core/4.0.7/twitter4j-core-4.0.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Fabio/Downloads/javamail1_4_5/javamail-1.4.5/mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Fabio/.m2/repository/com/restfb/restfb/2.10.0/restfb-2.10.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
