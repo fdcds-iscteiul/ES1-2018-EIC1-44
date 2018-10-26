@@ -1,4 +1,4 @@
-package api;
+package API;
 
 import java.util.List;
 import twitter4j.Status;

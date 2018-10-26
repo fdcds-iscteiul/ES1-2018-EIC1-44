@@ -1,4 +1,4 @@
-package api;
+package API;
 
 import java.util.List;
 import com.restfb.Connection;
