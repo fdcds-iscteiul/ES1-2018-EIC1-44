@@ -1,4 +1,4 @@
-package api;
+package API;
 
 import java.util.List;
 import com.restfb.Connection;
@@ -8,8 +8,8 @@ import com.restfb.FacebookClient.AccessToken;
 import com.restfb.types.Post;
 import com.restfb.types.User;
 
-public class FacebookMain {
-	public static void main(String[] args) {
+public class Facebook {
+	public  Facebook() {
 		/* 
 		 * Facebook API Tutorials in Java # 1 | Setup Development Environment 
 		 * https://www.youtube.com/watch?v=m14hYs1T3FA&index=1&list=PLYPFxrXyK0BwiXNe09hTPjFqYbsWv8gxb
@@ -18,8 +18,7 @@ public class FacebookMain {
 		 * Facebook API Tutorials in Java # 2 | Get User Access Token
 		 * https://www.youtube.com/watch?v=GwbO_PdwK_4&index=2&list=PLYPFxrXyK0BwiXNe09hTPjFqYbsWv8gxb
 		 */
-		
-		String accessToken2 = "EAADoqB2UXrMBAHdfPcaqkgylkwZAeiwIe1T95z3EPQKtjOM1WR9tT23jQEOkrXltZATTVZA7O6jw1onu2J211peTlCJqgFwFymlzFKCAVh8Bxbd4xMCUVu3FtN2bYaZBxcpLmQHikcmsnGVZCDn8vtWyIa3VmBWnaLbZCVTePaOv1I1ehQpZASrlER5B6hZCZCtCOIlvdquthG9d29TQ3DY1A";
+		String accessToken2 = "EAADoqB2UXrMBAF8g7RPfhlItokw6tKZBjT9HjcTyDeYgZAgm8kRv8U5XTwLro29cbTXZCOHlyd0DCs0f0Acud8dGFiZCHVONhXnJSNK9WsKPudT0I9RygeZApsbmMUidyyrTrU99Krxj0hduO8pKo5ROhysoBXZA639Lb2qZAIo3W3qyKLTLQue4a4BJyg5ayUEZB3Nbd4S6PwZDZD";
 		FacebookClient fbClient2 = new DefaultFacebookClient(accessToken2);
 		User me2 = fbClient2.fetchObject("me", User.class);
 		System.out.println("Facebook:");

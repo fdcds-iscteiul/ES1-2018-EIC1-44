@@ -1,9 +1,9 @@
-package api;
+package API;
 
 import java.io.*;
 import java.util.*;
 import javax.mail.*;
-import javax.mail.internet.*;
+
 
 public class Testemail {
 
@@ -73,7 +73,7 @@ public class Testemail {
 
  
 
-  public static void main(String args[]) throws Exception {
+  public static void Testemail() throws Exception {
     Testemail.doit();
   }
 }
