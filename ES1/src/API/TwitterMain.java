@@ -18,8 +18,8 @@ public final class TwitterMain  {
         try {
         	ConfigurationBuilder cb = new ConfigurationBuilder();
         	cb.setDebugEnabled(true)
-        	  .setOAuthConsumerKey("NH3ohDmdbj3AAYtR8yPshwH1c")
-        	  .setOAuthConsumerSecret("4ELUtYI0pL7XLX4Ju7mzUKKRXvJvviejwcAAkZsSgHIdQbd6P0")
+        	  .setOAuthConsumerKey("wN58D44smQU7quj2FoHPKP6TH")
+        	  .setOAuthConsumerSecret("N2bst4YhYG4edToI6KK0H2BbH6bv9ZKgPio0aivs8auVtXMnGm")
         	  .setOAuthAccessToken("1055488325426073606-DlZjGTd95iW8HEEWoC2zX9Vt0ISis7")
         	  .setOAuthAccessTokenSecret("g9voSGZmJdxyGe9PhUcRJGSXV8J0WU4nwb6gkpNOft3rP");
         	TwitterFactory tf = new TwitterFactory(cb.build());

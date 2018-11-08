@@ -18,7 +18,7 @@ public class Facebook {
 		 * Facebook API Tutorials in Java # 2 | Get User Access Token
 		 * https://www.youtube.com/watch?v=GwbO_PdwK_4&index=2&list=PLYPFxrXyK0BwiXNe09hTPjFqYbsWv8gxb
 		 */
-		String accessToken2 = "EAADoqB2UXrMBAF8g7RPfhlItokw6tKZBjT9HjcTyDeYgZAgm8kRv8U5XTwLro29cbTXZCOHlyd0DCs0f0Acud8dGFiZCHVONhXnJSNK9WsKPudT0I9RygeZApsbmMUidyyrTrU99Krxj0hduO8pKo5ROhysoBXZA639Lb2qZAIo3W3qyKLTLQue4a4BJyg5ayUEZB3Nbd4S6PwZDZD";
+		String accessToken2 = "EAADoqB2UXrMBALwNiav110LsPbHVfNE6ZAWRk88RIssC4mgsn0HcWekK6p1P13hDOPLUDyblMCFsnNVZAABzV9pMGT25LkYxvzCpDdC1cY3zsZCtZCoxGev6YmvHB2jAqwqFgNdTafRpVkhC2ZCGC8XnZCzMLvMZBB6ZAXx8dyh7EMAjCkZBOmzGz82r8bgPtKo7lZC0ZC2RtSqLgZDZD";
 		FacebookClient fbClient2 = new DefaultFacebookClient(accessToken2);
 		User me2 = fbClient2.fetchObject("me", User.class);
 		System.out.println("Facebook:");
