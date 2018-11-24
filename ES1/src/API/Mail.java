@@ -1,21 +1,26 @@
 package API;
 
+
 import java.io.*;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 import com.sun.mail.smtp.SMTPTransport;
 
 
 public class Mail {
 
-  public Mail() {}
+public Mail() throws MessagingException, IOException {
+	doit();
+}
  
+private ArrayList<API_Message> mess = new ArrayList<>() ;
 
 
-  public static void doit() throws MessagingException, IOException {
+  public void doit() throws MessagingException, IOException {
     Folder folder = null;
     Store store = null ;
     try {
@@ -28,28 +33,17 @@ public class Mail {
       store.connect("imap.gmail.com","es1.2018.eic1.44@gmail.com", "262577136d");
       
       folder = store.getFolder("Inbox");
-      /* Others GMail folders :
-       * [Gmail]/All Mail   This folder contains all of your Gmail messages.
-       * [Gmail]/Drafts     Your drafts.
-       * [Gmail]/Sent Mail  Messages you sent to other people.
-       * [Gmail]/Spam       Messages marked as spam.
-       * [Gmail]/Starred    Starred messages.
-       * [Gmail]/Trash      Messages deleted from Gmail.
-       */
+      
       folder.open(Folder.READ_WRITE);
       Message messages[] = folder.getMessages();
       System.out.println("No of Messages : " + folder.getMessageCount());
       System.out.println("No of Unread Messages : " + folder.getUnreadMessageCount());
       for (int i=0; i < messages.length; ++i) {
-        System.out.println("MESSAGE #" + (i + 1) + ":");
         Message msg = messages[i];
-        /*
-          if we don''t want to fetch messages already processed
-          if (!msg.isSet(Flags.Flag.SEEN)) {
-             String from = "unknown";
-             ...
-          }
-        */
+        mess.add(new API_Message(msg.getFrom()[0].toString(), msg.getSubject() , msg.getContent().toString()));
+      
+      
+        System.out.println( msg.getContent());
         String from = "unknown";
         if (msg.getReplyTo().length >= 1) {
           from = msg.getReplyTo()[0].toString();
@@ -57,14 +51,8 @@ public class Mail {
         else if (msg.getFrom().length >= 1) {
           from = msg.getFrom()[0].toString();
         }
-        String subject = msg.getSubject();
-        System.out.println("Saving ... " + subject +" " + from);
-        // you may want to replace the spaces with "_"
-        // the TEMP directory is used to store the files
-        String filename = "c:/temp/" +  subject;
+//          String filename = "c:/temp/" +  subject;
         msg.setFlag(Flags.Flag.SEEN,true);
-        // to delete the message
-        // msg.setFlag(Flags.Flag.DELETED, true);
       }
     }
     finally {
@@ -93,9 +81,26 @@ public void send_message(String conteudo, String sender_email, String header , S
     System.out.println("Response: " + t.getLastServerResponse());
     t.close();
 }
-  
+private String getTextFromMessage(Message message) throws Exception {
+    if (message.isMimeType("text/plain")){
+        return message.getContent().toString();
+    }else if (message.isMimeType("multipart/*")) {
+        String result = "";
+        MimeMultipart mimeMultipart = (MimeMultipart)message.getContent();
+        int count = mimeMultipart.getCount();
+        for (int i = 0; i < count; i ++){
+            BodyPart bodyPart = mimeMultipart.getBodyPart(i);
+            if (bodyPart.isMimeType("text/plain")){
+                result = result + "\n" + bodyPart.getContent();
+                break;  //without break same text appears twice in my tests
+            } else if (bodyPart.isMimeType("text/html")){
+                String html = (String) bodyPart.getContent();
+//                result = result + "\n" + Jsoup.parse(html).text();
 
-  public static void Testemail() throws Exception {
-    Mail.doit();
-  }
+            }
+        }
+        return result;
+    }
+    return "";
+}
 }
