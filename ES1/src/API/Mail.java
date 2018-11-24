@@ -3,20 +3,21 @@ package API;
 import java.io.*;
 import java.util.*;
 import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+import com.sun.mail.smtp.SMTPTransport;
 
 
-public class Testemail {
+public class Mail {
 
-  public Testemail() {}
+  public Mail() {}
+ 
 
-  //
-  // inspired by :
-  // http://www.mikedesjardins.net/content/2008/03/using-javamail-to-read-and-extract/
-  //
 
   public static void doit() throws MessagingException, IOException {
     Folder folder = null;
-    Store store = null;
+    Store store = null ;
     try {
       Properties props = System.getProperties();
       props.setProperty("mail.store.protocol", "imaps");
@@ -25,6 +26,7 @@ public class Testemail {
 //       session.setDebug(true);
       store = session.getStore("imaps");
       store.connect("imap.gmail.com","es1.2018.eic1.44@gmail.com", "262577136d");
+      
       folder = store.getFolder("Inbox");
       /* Others GMail folders :
        * [Gmail]/All Mail   This folder contains all of your Gmail messages.
@@ -71,9 +73,29 @@ public class Testemail {
     }
   }
 
- 
+public void send_message(String conteudo, String sender_email, String header , String subject ) throws MessagingException {
+	Properties props = System.getProperties();
+    props.put("mail.smtps.host","smtp.gmail.com");
+    props.put("mail.smtps.auth","true");
+    Session session = Session.getInstance(props, null);
+    Message msg = new MimeMessage(session);
+    msg.setFrom(new InternetAddress("es1.2018.eic1.44@gmail.com"));;
+    msg.setRecipients(Message.RecipientType.TO,
+    InternetAddress.parse(sender_email, false));
+    msg.setSubject("Heisann "+System.currentTimeMillis());
+    msg.setText(conteudo);
+    msg.setHeader("X-Mailer", subject);
+    msg.setSentDate(new Date());
+    SMTPTransport t =
+        (SMTPTransport)session.getTransport("smtps");
+    t.connect("smtp.gmail.com", "es1.2018.eic1.44@gmail.com", "262577136d");
+    t.sendMessage(msg, msg.getAllRecipients());
+    System.out.println("Response: " + t.getLastServerResponse());
+    t.close();
+}
+  
 
   public static void Testemail() throws Exception {
-    Testemail.doit();
+    Mail.doit();
   }
 }
