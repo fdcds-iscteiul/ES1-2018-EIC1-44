@@ -1,29 +1,32 @@
 package API;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import twitter4j.Status;
 import twitter4j.Twitter;
+import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
 
 
 public final class TwitterMain  {
+	private Twitter twitter;
+	private ArrayList<API_Message> api_message = new ArrayList<API_Message>();
 	public TwitterMain() {
 		
 
-		// http://twitter4j.org
-		// http://twitter4j.org/en/code-examples.html
-		// https://www.youtube.com/watch?v=uYPmkzMpnxw
         try {
         	ConfigurationBuilder cb = new ConfigurationBuilder();
         	cb.setDebugEnabled(true)
-        	  .setOAuthConsumerKey("NH3ohDmdbj3AAYtR8yPshwH1c")
-        	  .setOAuthConsumerSecret("4ELUtYI0pL7XLX4Ju7mzUKKRXvJvviejwcAAkZsSgHIdQbd6P0")
-        	  .setOAuthAccessToken("1055488325426073606-DlZjGTd95iW8HEEWoC2zX9Vt0ISis7")
-        	  .setOAuthAccessTokenSecret("g9voSGZmJdxyGe9PhUcRJGSXV8J0WU4nwb6gkpNOft3rP");
+        	  .setOAuthConsumerKey("okgos8Ccxc92AXhHrYPuM2yVt")
+        	  .setOAuthConsumerSecret("pCG9PnI57rmA0uit6YyXIm4YWX69C3qARO7WXbVOyND1LQ2D6M")
+        	  .setOAuthAccessToken("1055488325426073606-0ZUoyoMbAhiOKiuHT05FlrxXq5NJ2G")
+        	  .setOAuthAccessTokenSecret("lBczHKjIw5XBPv7JPpa2e4swqsr2BmrkrMbjABuEXI6SK");
         	TwitterFactory tf = new TwitterFactory(cb.build());
-        	Twitter twitter = tf.getInstance();        		
+        	twitter = tf.getInstance();
+        	
             List<Status> statuses = twitter.getHomeTimeline();
             System.out.println("------------------------\n Showing home timeline \n------------------------");
     		int counter=0;
@@ -32,6 +35,7 @@ public final class TwitterMain  {
 				// Filters only tweets from user "catarina"
 				if (status.getUser().getName() != null ) {
 					System.out.println(status.getUser().getName() + ":" + status.getText());
+					api_message.add(new API_Message(status.getUser().getName(), status.getText()));
 					counter++;
 				}
 				counterTotal++;
@@ -39,5 +43,14 @@ public final class TwitterMain  {
     		System.out.println("-------------\nNº of Results: " + counter+"/"+counterTotal);
         } catch (Exception e) { System.out.println(e.getMessage()); }
      }
+	
+	public void Post(String mensagem) {
+		try {
+			twitter.updateStatus(mensagem);
+		} catch (TwitterException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
     
