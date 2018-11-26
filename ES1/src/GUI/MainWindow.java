@@ -38,6 +38,10 @@ public class MainWindow {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * List=sender
+	 * List1=subject
+	 * List2=Content Preview 
+	 * 
 	 */
 	private void initialize() {
 		frame = new JFrame();
