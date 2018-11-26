@@ -4,14 +4,15 @@ public class Main {
 
 	public static void main(String[] args) {
 //		Facebook a =new Facebook();
-//		Testemail m = new Testemail();
+//		a.facebook_post();
+		
 //		TwitterMain t = new TwitterMain();
-//		try {
-//			m.Testemail();
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			Mail m = new Mail();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
