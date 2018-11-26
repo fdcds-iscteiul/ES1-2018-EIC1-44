@@ -15,5 +15,10 @@ class TestMail {
 	void testSend_message() {
 		fail("Not yet implemented");
 	}
+	
+	@Test
+	void testGetTextFromMessage() {
+		fail("Not yet implemented");
+	}
 
 }
