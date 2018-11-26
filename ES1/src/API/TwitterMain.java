@@ -19,17 +19,20 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public final class TwitterMain  {
 	private Twitter twitter;
-	private ArrayList<API_Message> api_message = new ArrayList<API_Message>();
+	private ArrayList<API_Message> mess = new ArrayList<API_Message>();
+	
+
+
 	public TwitterMain() {
 		
 
         try {
         	ConfigurationBuilder cb = new ConfigurationBuilder();
         	cb.setDebugEnabled(true)
-        	  .setOAuthConsumerKey("okgos8Ccxc92AXhHrYPuM2yVt")
-        	  .setOAuthConsumerSecret("pCG9PnI57rmA0uit6YyXIm4YWX69C3qARO7WXbVOyND1LQ2D6M")
+        	  .setOAuthConsumerKey("D84ryBw4offC2D42qe8TRqYYc")
+        	  .setOAuthConsumerSecret("1055488325426073606-BYZbbqAjRP2vadMBTRzRxhPySI8MBN")
         	  .setOAuthAccessToken("1055488325426073606-0ZUoyoMbAhiOKiuHT05FlrxXq5NJ2G")
-        	  .setOAuthAccessTokenSecret("lBczHKjIw5XBPv7JPpa2e4swqsr2BmrkrMbjABuEXI6SK");
+        	  .setOAuthAccessTokenSecret("FWlCy2INzzYIm8OvepSHKrTomvy80wATbmnx5MdScD3ne ");
         	TwitterFactory tf = new TwitterFactory(cb.build());
         	twitter = tf.getInstance();
         	
@@ -41,7 +44,7 @@ public final class TwitterMain  {
 				// Filters only tweets from user "catarina"
 				if (status.getUser().getName() != null ) {
 					System.out.println(status.getUser().getName() + ":" + status.getText());
-					api_message.add(new API_Message(status.getUser().getName(), status.getText()));
+					mess.add(new API_Message(status.getUser().getName(), status.getText()));
 					counter++;
 				}
 				counterTotal++;
@@ -56,6 +59,9 @@ public final class TwitterMain  {
  * @param mensagem
  * Funçao para publicar uma mensagem 
  */
+	public ArrayList<API_Message> getMess() {
+		return mess;
+	}
 	public void Post(String mensagem) {
 		try {
 			twitter.updateStatus(mensagem);
