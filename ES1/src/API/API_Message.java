@@ -10,6 +10,9 @@ package API;
 
 public class API_Message {
 
+	public String getDescription() {
+		return description;
+	}
 	private String sender;
 	private String message;
 	private String description;

@@ -4,10 +4,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.mail.MessagingException;
+import javax.swing.DefaultListModel;
 
 public class Message_Control {
 	
 	private ArrayList<API_Message> mess = new ArrayList<>() ;
+	private DefaultListModel<String> sender;
+	private DefaultListModel<String> message;
+	private DefaultListModel<String> description;
 	/**
 	 * Classe de controlo de mensagens API 
 	 */
@@ -33,9 +37,13 @@ public class Message_Control {
 	private void copylist (ArrayList<API_Message> api) {
 		for(int i=0;i<api.size();i++) {
 			mess.add(api.get(i));
-		}
+			description.addElement(api.get(i).getDescription());
+			message.addElement(api.get(i).getMessage());
+			sender.addElement(api.get(i).getSender());
+		
 		
 	}
+}
 }
 
 
