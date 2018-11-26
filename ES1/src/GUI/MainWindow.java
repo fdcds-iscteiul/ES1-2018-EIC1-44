@@ -70,11 +70,15 @@ public class MainWindow {
 		frame.getContentPane().add(lblContentPreview);
 
 		JButton btnExit = new JButton("Exit");
-		btnExit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnExit.setBounds(354, 243, 75, 29);
 		frame.getContentPane().add(btnExit);
+		btnExit.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ChooseWindow window = new ChooseWindow();
+				window.frame.setVisible(true);
+				frame.setVisible(false);
+			}
+		});
 	}
 }
