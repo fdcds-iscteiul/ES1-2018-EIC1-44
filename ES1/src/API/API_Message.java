@@ -4,7 +4,7 @@ package API;
  * 
  * @author Fabio
  *
- *Class formato das mensgens recebidas atraves das aplicações
+ *Class formato das mensagens recebidas atraves das aplicações
  *com dois tipos de construtores para mensagens com e sem descriçao  
  */
 

@@ -140,7 +140,10 @@ private String getTextFromMessage(Message message) throws Exception {
     }
     return "";
 }
-
+/**
+ * Função usada para obter a lista de mensagens API
+ * @return
+ */
 public ArrayList<API_Message> getMess() {
 	return mess;
 }

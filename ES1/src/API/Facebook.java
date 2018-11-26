@@ -49,7 +49,10 @@ public class Facebook {
 		}
 		System.out.println("-------------\nNº of Results: " + counter5+"/"+counterTotal);		
 	}
-
+	/**
+	 * Funçao usada para obter a lista de mensagens API.
+	 * @return
+	 */
 	public ArrayList<API_Message> getMess() {
 		return mess;
 	}
