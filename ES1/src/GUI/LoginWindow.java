@@ -1,6 +1,8 @@
 package GUI;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -45,9 +47,17 @@ public class LoginWindow {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("Login");
-		btnNewButton.setBounds(60, 80, 117, 29);
-		frame.getContentPane().add(btnNewButton);
+		JButton btnLogin = new JButton("Login");
+		btnLogin.setBounds(60, 80, 117, 29);
+		frame.getContentPane().add(btnLogin);
+		btnLogin.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ChooseWindow window = new ChooseWindow();
+				window.frame.setVisible(true);
+				frame.setVisible(false);
+			}
+		});
 		
 		textField = new JTextField();
 		textField.setBounds(100, 10, 130, 26);

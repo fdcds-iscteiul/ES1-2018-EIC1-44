@@ -75,8 +75,6 @@ public class MainWindow {
 		btnExit.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ChooseWindow window = new ChooseWindow();
-				window.frame.setVisible(true);
 				frame.setVisible(false);
 			}
 		});
