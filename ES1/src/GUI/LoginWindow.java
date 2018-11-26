@@ -8,12 +8,16 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class LoginWindow {
 
-	private JFrame frame;
+	JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JLabel lblIfYouDont;
 
 	/**
 	 * Launch the application.
@@ -43,7 +47,7 @@ public class LoginWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 250, 150);
+		frame.setBounds(100, 100, 250, 180);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -76,5 +80,18 @@ public class LoginWindow {
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setBounds(20, 50, 72, 16);
 		frame.getContentPane().add(lblPassword);
+		
+		lblIfYouDont = new JLabel("If you don't have an account sign up here.");
+		lblIfYouDont.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				SignUpWindow window = new SignUpWindow();
+				window.frame.setVisible(true);
+				frame.setVisible(false);
+			}
+		});
+		lblIfYouDont.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		lblIfYouDont.setBounds(20, 121, 210, 16);
+		frame.getContentPane().add(lblIfYouDont);
 	}
 }
