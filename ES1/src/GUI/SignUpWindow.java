@@ -1,6 +1,8 @@
 package GUI;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,7 +11,7 @@ import javax.swing.JButton;
 
 public class SignUpWindow {
 
-	private JFrame frame;
+	JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -96,6 +98,14 @@ public class SignUpWindow {
 		JButton btnSignUp = new JButton("Sign Up");
 		btnSignUp.setBounds(125, 170, 100, 30);
 		frame.getContentPane().add(btnSignUp);
+		btnSignUp.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				LoginWindow window = new LoginWindow();
+				window.frame.setVisible(true);
+				frame.setVisible(false);
+			}
+		});
 	}
 
 }
