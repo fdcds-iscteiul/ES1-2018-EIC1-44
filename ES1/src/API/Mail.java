@@ -140,4 +140,10 @@ private String getTextFromMessage(Message message) throws Exception {
     }
     return "";
 }
+
+public ArrayList<API_Message> getMess() {
+	return mess;
+}
+
+
 }

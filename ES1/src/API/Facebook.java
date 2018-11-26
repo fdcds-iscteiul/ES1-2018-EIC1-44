@@ -1,5 +1,6 @@
 package API;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.restfb.Connection;
 import com.restfb.DefaultFacebookClient;
@@ -16,10 +17,12 @@ import com.restfb.types.User;
  */
 public class Facebook {
 	FacebookClient fbClient2;
+	private ArrayList<API_Message> mess = new ArrayList<API_Message>();
+	
 	public  Facebook() {
 	
 		
-		String accessToken = "EAADoqB2UXrMBALiUSXd4BWHHgGDfgRJ5VCCBtvsw7LTwBn2sA05CwCgb8N9FdZBUVAyvet6NeCFjL43ZCLkBM4il5Mk5WpZCj8OPWarH6bZA7bZA0FLM9xQX3yknfxVYW8Od2H1LRwgtFGzvNZC8w2nAKSCNpLtAouBnaPse5WpTvWaanCy2hbohaSXvEAil8TCn3OxI4JjAZDZD";
+		String accessToken = "EAADoqB2UXrMBAMN6GkfvzLTgLEzdlNjLuid4tiV6dLZAlBD08mC7VmfXCw5GeQ83B0KZB0crp1iTXrFRQEqNT4AqilvkXJhm4IPKEEXQ2T4suKybuc4Pl8gouF5mcpoBKBHhA96g4BcJn9lCvkOaYXX4ZBXJrrxoXMZB3akZAgZAbtzb8Gh6DKhyrbIZCGfNh8FDrF820Ti0QZDZD";
 		fbClient2 = new DefaultFacebookClient(accessToken);
 		User me2 = fbClient2.fetchObject("me", User.class);
 		System.out.println("Facebook:");
@@ -38,6 +41,7 @@ public class Facebook {
 					System.out.println("Id: "+"fb.com/"+aPost.getId());
 					System.out.println("Message: "+aPost.getMessage());
 					System.out.println("Created: "+aPost.getCreatedTime());
+					mess.add(new API_Message(aPost.getId(), aPost.getMessage()));
 					counter5++;
 				}
 				counterTotal++;
@@ -45,6 +49,12 @@ public class Facebook {
 		}
 		System.out.println("-------------\nNº of Results: " + counter5+"/"+counterTotal);		
 	}
+
+	public ArrayList<API_Message> getMess() {
+		return mess;
+	}
+
+
 	
 
 }
