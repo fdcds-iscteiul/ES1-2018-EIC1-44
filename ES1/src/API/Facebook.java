@@ -4,13 +4,16 @@ import java.util.List;
 import com.restfb.Connection;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
-import com.restfb.FacebookClient.AccessToken;
-import com.restfb.Parameter;
-import com.restfb.types.FacebookType;
-import com.restfb.types.Page;
 import com.restfb.types.Post;
 import com.restfb.types.User;
 
+/**
+ * 
+ * @author Fabio
+ *
+ *Facebook api - Recebe mensagens do facebook,
+ * transforma no modo api_message e guarda numa lista
+ */
 public class Facebook {
 	FacebookClient fbClient2;
 	public  Facebook() {
@@ -43,8 +46,5 @@ public class Facebook {
 		System.out.println("-------------\nNº of Results: " + counter5+"/"+counterTotal);		
 	}
 	
-	public void facebook_post() {
-	
-		System.err.println("ok");
-	}
+
 }

@@ -1,6 +1,5 @@
 package API;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import twitter4j.Status;
@@ -9,6 +8,13 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
+/**
+ * 
+ * @author Fabio
+ *
+ *Twitter api - Recebe mensagens do twitter,
+ * transforma no modo api_message e guarda numa lista
+ */
 
 
 public final class TwitterMain  {
@@ -44,6 +50,12 @@ public final class TwitterMain  {
         } catch (Exception e) { System.out.println(e.getMessage()); }
      }
 	
+	
+/**
+ * 
+ * @param mensagem
+ * Funçao para publicar uma mensagem 
+ */
 	public void Post(String mensagem) {
 		try {
 			twitter.updateStatus(mensagem);

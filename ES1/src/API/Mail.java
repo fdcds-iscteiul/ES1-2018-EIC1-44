@@ -15,12 +15,21 @@ import com.sun.mail.smtp.SMTPTransport;
 
 public class Mail {
 
+	/**
+	 * 
+	 * @author Fabio
+	 *
+	 *Mail api - Recebe mensagens do email,
+	 * transforma no modo api_message e guarda numa lista
+	 */
+
+	
+private ArrayList<API_Message> mess = new ArrayList<>() ;
+
+
 public Mail() throws MessagingException, IOException {
 	doit();
 }
- 
-private ArrayList<API_Message> mess = new ArrayList<>() ;
-
 
   public void doit() throws MessagingException, IOException {
     Folder folder = null;
@@ -68,6 +77,17 @@ private ArrayList<API_Message> mess = new ArrayList<>() ;
     }
   }
 
+  
+  /**
+   * 
+   * @param conteudo
+   * @param sender_email
+   * @param header
+   * @param subject
+   * @throws MessagingException
+   * 
+   * Envia um email para o emailsender_email com o respetivo assunto(subject)com cabeçalho (header) 
+   */
 public void send_message(String conteudo, String sender_email, String header , String subject ) throws MessagingException {
 	Properties props = System.getProperties();
     props.put("mail.smtps.host","smtp.gmail.com");
@@ -89,6 +109,14 @@ public void send_message(String conteudo, String sender_email, String header , S
     t.close();
 }
 
+/**
+ * 
+ * @param message
+ * @return
+ * @throws Exception
+ * 
+ * Descodificador de conteudo de e-mail
+ */
 
 private String getTextFromMessage(Message message) throws Exception {
     if (message.isMimeType("text/plain")){
