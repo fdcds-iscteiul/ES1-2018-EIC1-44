@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import API.API_Message;
 
-class testAPI_Message {
+class TestAPI_Message {
 
 	@Test
 	void testAPI_MessageStringString() {
