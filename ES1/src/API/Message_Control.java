@@ -30,6 +30,18 @@ public class Message_Control {
 		TwitterMain twitter = new TwitterMain();
 		copylist(twitter.getMess());
 	}
+	public ArrayList<API_Message> getMess() {
+		return mess;
+	}
+	public DefaultListModel<String> getSender() {
+		return sender;
+	}
+	public DefaultListModel<String> getMessage() {
+		return message;
+	}
+	public DefaultListModel<String> getDescription() {
+		return description;
+	}
 	/***
 	 * Void copyList, adiciona o conteudo da lista API a uma lista secundária
 	 * @param api
