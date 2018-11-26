@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 
 public class ChooseWindow {
 
-	private JFrame frame;
+	JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -56,6 +56,7 @@ public class ChooseWindow {
 			public void actionPerformed(ActionEvent e) {
 				MainWindow window = new MainWindow();
 				window.frame.setVisible(true);
+				frame.setVisible(false);
 			}
 		});
 			
