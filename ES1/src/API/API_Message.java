@@ -1,11 +1,18 @@
 package API;
 
-import javax.mail.Address;
+/**
+ * 
+ * @author Fabio
+ *
+ *Class formato das mensgens recebidas atraves das aplicações
+ *com dois tipos de construtores para mensagens com e sem descriçao  
+ */
 
 public class API_Message {
 
 	private String sender;
 	private String message;
+	private String description;
 	
 	public API_Message(String sender, String message ) {
 		this.sender=sender;
@@ -16,8 +23,10 @@ public class API_Message {
 	
 	
 	public API_Message(String sender, String description, String message) {
-		// TODO Auto-generated constructor stub
-	}
+this.sender=sender;
+this.description=description;
+this.message=message;
+}
 
 
 

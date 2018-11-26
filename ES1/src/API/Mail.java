@@ -8,17 +8,28 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import org.jsoup.Jsoup;
+
 import com.sun.mail.smtp.SMTPTransport;
 
 
 public class Mail {
 
+	/**
+	 * 
+	 * @author Fabio
+	 *
+	 *Mail api - Recebe mensagens do email,
+	 * transforma no modo api_message e guarda numa lista
+	 */
+
+	
+private ArrayList<API_Message> mess = new ArrayList<>() ;
+
+
 public Mail() throws MessagingException, IOException {
 	doit();
 }
- 
-private ArrayList<API_Message> mess = new ArrayList<>() ;
-
 
   public void doit() throws MessagingException, IOException {
     Folder folder = null;
@@ -43,7 +54,12 @@ private ArrayList<API_Message> mess = new ArrayList<>() ;
         mess.add(new API_Message(msg.getFrom()[0].toString(), msg.getSubject() , msg.getContent().toString()));
       
       
-        System.out.println( msg.getContent());
+        try {
+			System.out.println(getTextFromMessage( msg));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         String from = "unknown";
         if (msg.getReplyTo().length >= 1) {
           from = msg.getReplyTo()[0].toString();
@@ -61,6 +77,17 @@ private ArrayList<API_Message> mess = new ArrayList<>() ;
     }
   }
 
+  
+  /**
+   * 
+   * @param conteudo
+   * @param sender_email
+   * @param header
+   * @param subject
+   * @throws MessagingException
+   * 
+   * Envia um email para o emailsender_email com o respetivo assunto(subject)com cabeçalho (header) 
+   */
 public void send_message(String conteudo, String sender_email, String header , String subject ) throws MessagingException {
 	Properties props = System.getProperties();
     props.put("mail.smtps.host","smtp.gmail.com");
@@ -81,6 +108,16 @@ public void send_message(String conteudo, String sender_email, String header , S
     System.out.println("Response: " + t.getLastServerResponse());
     t.close();
 }
+
+/**
+ * 
+ * @param message
+ * @return
+ * @throws Exception
+ * 
+ * Descodificador de conteudo de e-mail
+ */
+
 private String getTextFromMessage(Message message) throws Exception {
     if (message.isMimeType("text/plain")){
         return message.getContent().toString();
@@ -95,7 +132,7 @@ private String getTextFromMessage(Message message) throws Exception {
                 break;  //without break same text appears twice in my tests
             } else if (bodyPart.isMimeType("text/html")){
                 String html = (String) bodyPart.getContent();
-//                result = result + "\n" + Jsoup.parse(html).text();
+                result = result + "\n" + Jsoup.parse(html).text();
 
             }
         }
