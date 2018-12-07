@@ -54,9 +54,9 @@ public class ChooseWindow {
 		btnStart.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainWindow window = new MainWindow();
-				window.frame.setVisible(true);
-				frame.setVisible(false);
+//				MainWindow window = new MainWindow();
+//				window.frame.setVisible(true);
+//				frame.setVisible(false);
 			}
 		});
 			

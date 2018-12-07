@@ -1,8 +1,17 @@
 package API;
 
+
+import javax.swing.DefaultListModel;
+
+import GUI.EmailGUI;
+import GUI.MainWindow;
+
+
+
 public class Main {
 
 	public static void main(String[] args) {
-         new Message_Control();
+        Message_Control control=  new Message_Control();
+        new MainWindow(control);
 	}
 }

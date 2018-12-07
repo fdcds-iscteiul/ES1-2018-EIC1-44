@@ -22,19 +22,30 @@ public final class TwitterMain  {
 	private ArrayList<API_Message> mess = new ArrayList<API_Message>();
 	
 
-
 	public TwitterMain() {
+		connect();
+		getmessages();
+ }
+	
+	
+	
+	private void connect(){
+		ConfigurationBuilder cb = new ConfigurationBuilder();
+		cb.setDebugEnabled(true)
+		  .setOAuthConsumerKey("D84ryBw4offC2D42qe8TRqYYc")
+		  .setOAuthConsumerSecret("1055488325426073606-BYZbbqAjRP2vadMBTRzRxhPySI8MBN")
+		  .setOAuthAccessToken("1055488325426073606-0ZUoyoMbAhiOKiuHT05FlrxXq5NJ2G")
+		  .setOAuthAccessTokenSecret("FWlCy2INzzYIm8OvepSHKrTomvy80wATbmnx5MdScD3ne ");
+		TwitterFactory tf = new TwitterFactory(cb.build());
+		twitter = tf.getInstance();
+		
+	}
+	
+	
+	private void getmessages() {
 		
 
         try {
-        	ConfigurationBuilder cb = new ConfigurationBuilder();
-        	cb.setDebugEnabled(true)
-        	  .setOAuthConsumerKey("D84ryBw4offC2D42qe8TRqYYc")
-        	  .setOAuthConsumerSecret("1055488325426073606-BYZbbqAjRP2vadMBTRzRxhPySI8MBN")
-        	  .setOAuthAccessToken("1055488325426073606-0ZUoyoMbAhiOKiuHT05FlrxXq5NJ2G")
-        	  .setOAuthAccessTokenSecret("FWlCy2INzzYIm8OvepSHKrTomvy80wATbmnx5MdScD3ne ");
-        	TwitterFactory tf = new TwitterFactory(cb.build());
-        	twitter = tf.getInstance();
         	
             List<Status> statuses = twitter.getHomeTimeline();
             System.out.println("------------------------\n Showing home timeline \n------------------------");
@@ -51,8 +62,9 @@ public final class TwitterMain  {
             }
     		System.out.println("-------------\nNº of Results: " + counter+"/"+counterTotal);
         } catch (Exception e) { System.out.println(e.getMessage()); }
-     }
-	
+    
+	}
+
 	
 /**
  * 

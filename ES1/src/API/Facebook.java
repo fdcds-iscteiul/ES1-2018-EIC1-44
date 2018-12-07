@@ -16,20 +16,26 @@ import com.restfb.types.User;
  * transforma no modo api_message e guarda numa lista
  */
 public class Facebook {
-	FacebookClient fbClient2;
+	FacebookClient fbClient;
 	private ArrayList<API_Message> mess = new ArrayList<API_Message>();
+
 	
 	public  Facebook() {
-	
-		
-		String accessToken = "EAADoqB2UXrMBAMN6GkfvzLTgLEzdlNjLuid4tiV6dLZAlBD08mC7VmfXCw5GeQ83B0KZB0crp1iTXrFRQEqNT4AqilvkXJhm4IPKEEXQ2T4suKybuc4Pl8gouF5mcpoBKBHhA96g4BcJn9lCvkOaYXX4ZBXJrrxoXMZB3akZAgZAbtzb8Gh6DKhyrbIZCGfNh8FDrF820Ti0QZDZD";
-		fbClient2 = new DefaultFacebookClient(accessToken);
-		User me2 = fbClient2.fetchObject("me", User.class);
+		acess();
+		getpost();
+		}
+
+	private void acess() {
+		String accessToken = "EAADoqB2UXrMBAPF9ZA6NlvPTevrtOTU1FOx5QXMidq4yiyZBvSTmoEFiNmdpIX0OLlUKBI08lE9fKPKKBERSdrbkZBTDvisXXQrbERVZAg7dNn9X4qWWWvL6VBLq5uemZCZClQu7jD5R9wZBQQWWPJIBiQuOR1XXUl63yJuBNR9OnhXvlqnNrYci9z6aDVV2kAZD";
+		fbClient = new DefaultFacebookClient(accessToken);
+		User me2 = fbClient.fetchObject("me", User.class);
 		System.out.println("Facebook:");
 		System.out.println("Id: " + me2.getId());
 		System.out.println("Name: " + me2.getName());
+	}
 	
-		Connection<Post> result = fbClient2.fetchConnection("me/feed",Post.class);
+	private void getpost() {
+		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);
 		System.out.println("\nPosts:");
 		int counter5 = 0;
 		int counterTotal = 0;
@@ -47,9 +53,9 @@ public class Facebook {
 				counterTotal++;
 			}
 		}
-		System.out.println("-------------\nNº of Results: " + counter5+"/"+counterTotal);		
+		System.out.println("-------------\nNº of Results: " + counter5+"/"+counterTotal);			
 	}
-
+	
 	public ArrayList<API_Message> getMess() {
 		return mess;
 	}

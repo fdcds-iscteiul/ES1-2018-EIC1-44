@@ -3,6 +3,11 @@ package GUI;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -45,6 +50,7 @@ public class SignUpWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		writexml();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 350, 240);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -108,4 +114,40 @@ public class SignUpWindow {
 		});
 	}
 
+	private void readxml() {
+		try
+        {
+            FileReader fstream = new FileReader("logs.xml");
+            BufferedReader out = new BufferedReader(fstream);
+            String y="E-mail";
+            while ((y=out.readLine()) != null)  {
+                System.out.println(y);
+            }
+            //out.close();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+	}
+	
+	private void writexml() {	
+		try {
+			boolean b = false;
+			FileWriter fstream = new FileWriter("logs.xml");
+			BufferedWriter write = new BufferedWriter(fstream);
+			while(b==false) {
+				if(write.equals(null)) {
+			write.write("email");
+			write.flush();
+			write.close();
+			
+				}
+				System.err.println("tou");
+				write.newLine();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }

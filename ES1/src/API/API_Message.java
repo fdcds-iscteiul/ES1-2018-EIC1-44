@@ -28,8 +28,13 @@ this.description=description;
 this.message=message;
 }
 
-
-
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
 
 	public String getSender() {
 		return sender;
