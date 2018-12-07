@@ -5,6 +5,8 @@ import java.util.List;
 import com.restfb.Connection;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
+import com.restfb.Parameter;
+import com.restfb.types.FacebookType;
 import com.restfb.types.Post;
 import com.restfb.types.User;
 
@@ -26,7 +28,7 @@ public class Facebook {
 		}
 
 	private void acess() {
-		String accessToken = "EAADoqB2UXrMBAPF9ZA6NlvPTevrtOTU1FOx5QXMidq4yiyZBvSTmoEFiNmdpIX0OLlUKBI08lE9fKPKKBERSdrbkZBTDvisXXQrbERVZAg7dNn9X4qWWWvL6VBLq5uemZCZClQu7jD5R9wZBQQWWPJIBiQuOR1XXUl63yJuBNR9OnhXvlqnNrYci9z6aDVV2kAZD";
+		String accessToken = "EAADoqB2UXrMBAJnkrDZBAkJuU1hXQ9G4AqDZAXUxYBhPG5n8FpD8yUd2hDMJqJtQlnr1CtW7LOmAqozzPPhOK1FDSWTRL44a7pGzpGsETuAn9vVrFUN3g2dL3ZAZA4SwcuEEfw1zgnRNZBVALpoZAFDeq4vuDZBjLccG12HLjZBqAfZAA1gai7Dr14BGjenclWaaSk5ZARSZAKBVAZDZD";
 		fbClient = new DefaultFacebookClient(accessToken);
 		User me2 = fbClient.fetchObject("me", User.class);
 		System.out.println("Facebook:");
@@ -54,6 +56,10 @@ public class Facebook {
 			}
 		}
 		System.out.println("-------------\nNº of Results: " + counter5+"/"+counterTotal);			
+	}
+	
+	public void send(String a , String b) {
+		fbClient.publish("PAGE_NAME/feed", FacebookType.class, Parameter.with(a,b));
 	}
 	
 	public ArrayList<API_Message> getMess() {

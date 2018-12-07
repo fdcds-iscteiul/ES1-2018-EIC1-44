@@ -81,6 +81,17 @@ public class MainWindow {
 				
 			}
 		});
+		JButton post = new JButton("Postar");
+		post.setBounds(150, 243, 100, 29);
+		frame.getContentPane().add(post);
+		post.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new postwindow(messages);
+				
+			}
+		});
 		
 		JButton btnExit = new JButton("Exit");
 		btnExit.setBounds(354, 243, 75, 29);

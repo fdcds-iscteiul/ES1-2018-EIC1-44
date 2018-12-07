@@ -8,30 +8,25 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import API.Message_Control;
+
 public class ChooseWindow {
 
 	JFrame frame;
+	private Message_Control control;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ChooseWindow window = new ChooseWindow();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the application.
+	 * @param control 
 	 */
-	public ChooseWindow() {
+
+	public ChooseWindow(Message_Control control) {
+		this.control=control;
 		initialize();
 	}
 
@@ -54,9 +49,8 @@ public class ChooseWindow {
 		btnStart.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				MainWindow window = new MainWindow();
-//				window.frame.setVisible(true);
-//				frame.setVisible(false);
+				MainWindow window = new MainWindow(control);
+				
 			}
 		});
 			

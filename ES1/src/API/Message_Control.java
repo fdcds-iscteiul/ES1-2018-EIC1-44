@@ -12,22 +12,23 @@ public class Message_Control {
 	private DefaultListModel<String> sender= new DefaultListModel<>();
 	private DefaultListModel<String> message= new DefaultListModel<>();
 	private DefaultListModel<String> description= new DefaultListModel<>();
-
-	
+	private Mail mail;
+	private TwitterMain twitter;
+	private Facebook face;
 
 	public Message_Control() {
 //		Facebook face = new Facebook();
 //		copylist(face.getMess());
 //		
 		try {
-			Mail mail = new Mail();
+			mail = new Mail();
 			copylist(mail.getMess());
 		} catch (MessagingException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 //		
-//		TwitterMain twitter = new TwitterMain();
+//		twitter = new TwitterMain();
 //		copylist(twitter.getMess());
 	}
 	
@@ -54,6 +55,27 @@ public class Message_Control {
 			message.addElement(api.get(i).getMessage());
 			sender.addElement(api.get(i).getSender());
 		}
+		
+	}
+
+	public void postmail(String text , String text2) {
+		try {
+			mail.send_message(text,"es1.2018.eic1.44@gmail.com", text2, text2);
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	public void posttw(String text, String string) {
+		twitter.Post(text);
+		
+	}
+
+	public void postface(String text, String string) {
+face.send(text , string);
 		
 	}
 }
